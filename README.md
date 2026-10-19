@@ -1,56 +1,51 @@
-<!--
-  Template repository for an ARGVUS Arch Linux package.
+# Gruvbox Light theme for ARGVUS
 
-  Before using this template, replace the placeholders and the example payload:
-  <OWNER>, <REPO>, <PKGNAME>, <PKGDESC>, the maintainer, and the license.
-  Keep the local and CI PKGBUILDs aligned; their source definitions are the
-  only intentional difference.
--->
+Official ARGVUS Light theme, `gruvbox-light`, with its Sticky and Float variants.
 
-# <PKGNAME>
-
-<PKGDESC>
-
-[![CI](https://github.com/<OWNER>/<REPO>/actions/workflows/ci.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/ci.yml)
-[![Release](https://github.com/<OWNER>/<REPO>/actions/workflows/release.yml/badge.svg)](https://github.com/<OWNER>/<REPO>/actions/workflows/release.yml)
+[![CI](https://github.com/argvus/argvus-theme-gruvbox-light/actions/workflows/ci.yml/badge.svg)](https://github.com/argvus/argvus-theme-gruvbox-light/actions/workflows/ci.yml)
+[![Release](https://github.com/argvus/argvus-theme-gruvbox-light/actions/workflows/release.yml/badge.svg)](https://github.com/argvus/argvus-theme-gruvbox-light/actions/workflows/release.yml)
 [![License](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](LICENSE)
 
-This repository is a starting point for an Arch Linux package. Replace the
-`src/` example with the files owned by the package and update both PKGBUILDs,
-the workflows, metadata, and documentation before publishing it.
+## Theme identity
 
-## Build and install
+| Field | Value |
+| --- | --- |
+| Theme ID | `gruvbox-light` (Float variant: `gruvbox-light-float`) |
+| Display name | Gruvbox Light |
+| Mode | `light` |
+| Default highlight | `#458588` |
+| GTK color scheme | `prefer-light` |
+| Calendar stylesheet | `gruvbox-light` |
+| Package | `argvus-theme-gruvbox-light` |
+| Wallpaper | `/usr/share/backgrounds/argvus/abstract/light/gruvbox-abstract-light.jxl` |
 
-On Arch Linux or a compatible distribution:
+The values above are the ones declared in
+`src/usr/share/argvus/appearance/themes.d/gruvbox-light/theme.toml`, the manifest that the
+desktop reads. The manifest is the source of truth; this page describes it.
+
+## Installing
+
+The package depends on `argvus` and `argvus-appearance`, so pacman installs them with it.
 
 ```sh
-sudo pacman -S --needed base-devel git shellcheck
-make validate
-make build
-make install
+sudo pacman -S argvus-theme-gruvbox-light
 ```
 
-`make build` creates a deterministic local source archive in
-`build/artifacts/` and a package in `build/dist/`. `make install` requires
-`sudo` and installs the one package found in that directory without a blanket
-`--overwrite` rule.
+Select the theme in the Control Center (Appearance > Themes), or run
+`argvus theme-switch gruvbox-light`.
 
-For package metadata only:
+## Files
 
-```sh
-make validate
-makepkg -p packaging/arch/ci/PKGBUILD --printsrcinfo
-```
+The package installs the theme's per-component files under `/usr/share/argvus` (and the
+calendar stylesheet under `/etc/argvus/taskbar/calendar/themes`). Each component that
+the theme styles has its own directory, listed by `find src -type f` in this repository.
 
-See [packaging/arch/README.md](packaging/arch/README.md) for the difference
-between local and release builds.
+## Development
 
-## Documentation
-
-- [DEVELOPMENT.md](DEVELOPMENT.md) — layout, checks, and releases
-- [CONTRIBUTING.md](CONTRIBUTING.md) — contribution workflow
-- [SECURITY.md](SECURITY.md) — private vulnerability reports
+Validate with `make validate` before building. The design rules are in
+[DEVELOPMENT.md](DEVELOPMENT.md); the ARGVUS documentation for themes is in
+`argvus/docs/en/user-guide/appearance.md` of the `argvus` repository.
 
 ## License
 
-SPDX: `GPL-3.0-only`. See [LICENSE](LICENSE).
+GPL-3.0-only. See [LICENSE](LICENSE).
