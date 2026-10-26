@@ -30,7 +30,7 @@
 .storage-menu-row.submenu-open,
 .storage-menu-row.pointer-over {
   color: #FBF1C7;
-  background-color: #458588;
+  background-color: {{ @accent | hex }};
   background-image: none;
   border: 0;
   box-shadow: none;

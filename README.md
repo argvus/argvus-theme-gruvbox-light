@@ -20,12 +20,11 @@ Official ARGVUS Light theme, `gruvbox-light`, with its Sticky and Float variants
 | Mode | `light` |
 | Default highlight | `#458588` |
 | GTK color scheme | `prefer-light` |
-| Calendar stylesheet | `gruvbox-light` |
 | Package | `argvus-theme-gruvbox-light` |
 | Wallpaper | `/usr/share/backgrounds/argvus/abstract/light/gruvbox-abstract-light.jxl` |
 
 The values above are the ones declared in
-`src/usr/share/argvus/appearance/themes.d/gruvbox-light/theme.toml`, the manifest that the
+`src/usr/share/argvus/themes/gruvbox-light/theme.toml`, the manifest that the
 desktop reads. The manifest is the source of truth; this page describes it.
 
 ## Installing
@@ -41,9 +40,13 @@ Select the theme in the Control Center (Appearance > Themes), or run
 
 ## Files
 
-The package installs the theme's per-component files under `/usr/share/argvus` (and the
-calendar stylesheet under `/etc/argvus/taskbar/calendar/themes`). Each component that
-the theme styles has its own directory, listed by `find src -type f` in this repository.
+The package installs the theme manifest,
+`/usr/share/argvus/themes/gruvbox-light/theme.toml` (schema 2: name, category, wallpaper and
+the palette), the templates it overrides under `overrides/` when it has any, and its
+wallpapers under `/usr/share/backgrounds/argvus`. The files of every component are
+rendered from the palette by the component's own templates when the theme is applied,
+for Sticky and Float alike. `argvus theme check src/usr/share/argvus/themes/gruvbox-light`
+renders them all and reports any error.
 
 ## Development
 
